@@ -48,7 +48,8 @@ generate_statistics <- function(df, subject_start, subject_end) {
       freq_table <- as.data.frame(table(var))
       colnames(freq_table) <- c("Level", "Count")
       freq_table$Variable <- var_name
-      freq_table$Min <- NA  # עמודות ריקות למשתנים קטגוריאליים
+      # עמודות ריקות למשתנים קטגוריאליים
+      freq_table$Min <- NA 
       freq_table$Max <- NA
       freq_table$Mean <- NA
       results_list[[var_name]] <- freq_table
@@ -57,6 +58,7 @@ generate_statistics <- function(df, subject_start, subject_end) {
   
   # שילוב כל התוצאות ל-Data Frame אחד
   results <- do.call(rbind, results_list)
+  # הסרת שמות השורות
   rownames(results) <- NULL  # הסרת שמות השורות
   return(results)
 }
